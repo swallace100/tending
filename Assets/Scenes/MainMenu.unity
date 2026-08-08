@@ -962,8 +962,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 550, y: -51.087097}
-  m_SizeDelta: {x: -1295.0002, y: -150.54138}
+  m_AnchoredPosition: {x: 455.75, y: -12.789978}
+  m_SizeDelta: {x: -1106.5, y: -227.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &492389470
 MonoBehaviour:
@@ -978,7 +978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.4862745}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.7372549}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1295,8 +1295,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 550, y: 299}
-  m_SizeDelta: {x: 723, y: 200}
+  m_AnchoredPosition: {x: 455.75, y: 299}
+  m_SizeDelta: {x: 911.5, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &833875921
 MonoBehaviour:
@@ -1384,7 +1384,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 2.2189026, y: 27.848324, z: 4.3379364, w: 48.101715}
+  m_margin: {x: 0.19421382, y: 27.848324, z: 4.3379364, w: 48.101715}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1597,7 +1597,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 550, y: -235}
+  m_AnchoredPosition: {x: 440, y: -203}
   m_SizeDelta: {x: 250, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1259207298
@@ -1816,8 +1816,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 595, y: 186}
-  m_SizeDelta: {x: 1000, y: 200}
+  m_AnchoredPosition: {x: 455.75, y: 178}
+  m_SizeDelta: {x: 911.5, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1517160203
 MonoBehaviour:
@@ -1839,7 +1839,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Your space for C-PTSD grounding and self-care
+  m_text: Grounding and self-care for C-PTSD
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1905,7 +1905,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 136.46677, y: 69.42609, z: 227.07166, w: 86.076836}
+  m_margin: {x: -11.363129, y: 69.42609, z: -3.7858887, w: 88.10199}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2096,7 +2096,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 550, y: -395}
+  m_AnchoredPosition: {x: 440, y: -328}
   m_SizeDelta: {x: 250, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2106678685
@@ -2276,7 +2276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 938198995642549812, guid: caf7b17b3fd715b49b112aa61c014736, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 550
+      value: 449
       objectReference: {fileID: 0}
     - target: {fileID: 938198995642549812, guid: caf7b17b3fd715b49b112aa61c014736, type: 3}
       propertyPath: m_AnchoredPosition.y
