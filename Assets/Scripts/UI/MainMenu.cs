@@ -14,8 +14,8 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        if (eventsHandler) eventsHandler.PlayFeverMusic();
-        if (eventsHandler) eventsHandler.PlayHomeAmbiance();
+        if (eventsHandler) eventsHandler.PlayMusic();
+        if (eventsHandler) eventsHandler.PlayAmbianceMusic();
 
 #if UNITY_WEBGL
         if (quitButton) quitButton.SetActive(false);
@@ -24,8 +24,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        if (MusicManager.Instance) MusicManager.Instance.StopMusic();
-        SceneManager.LoadScene("PlayerHome");
+        SceneManager.LoadScene("GameMenu");
     }
 
     public void OptionsMenu()

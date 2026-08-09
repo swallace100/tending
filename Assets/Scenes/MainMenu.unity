@@ -2409,18 +2409,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fe4f07352e759e44bbaac3a16f4bb33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EventsHandler
-  defaultMusicVolume: 0.2
-  dreamMusicVolume: 0.1
-  dreamMusicIntro: {fileID: 0}
-  dreamMusicLoop: {fileID: 0}
-  feverMusicIntro: {fileID: 8300000, guid: da1d5626387e74041886cae622654d73, type: 3}
-  feverMusicLoop: {fileID: 8300000, guid: 27531be3eb43cab478ab10ca4c4db08f, type: 3}
-  lostMusicLoop: {fileID: 0}
-  outroMusicIntro: {fileID: 0}
-  outroMusicLoop: {fileID: 0}
-  outroMusicVolume: 0.15
-  dreamAmbiance: {fileID: 8300000, guid: 6a339ed2c93166843b8d69cdd95158b3, type: 3}
-  homeAmbiance: {fileID: 0}
+  defaultMusicVolume: 1
+  defaultAmbientVolume: 0.8
+  gameMusic: {fileID: 8300000, guid: ae6d2e4dc04f84f2a9eea526b8cf335a, type: 3}
+  ambianceMusic: {fileID: 8300000, guid: 749428170bd956149a4ede7c65dbb8b6, type: 3}
 --- !u!4 &1104483192
 Transform:
   m_ObjectHideFlags: 0
@@ -3467,6 +3459,22 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 8864801398436966196, guid: 77fa088b5468bfb4783db7e968ca2189, type: 3}
+    - target: {fileID: 7343507523405618432, guid: caf7b17b3fd715b49b112aa61c014736, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343507523405618432, guid: caf7b17b3fd715b49b112aa61c014736, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343507523405618432, guid: caf7b17b3fd715b49b112aa61c014736, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343507523405618432, guid: caf7b17b3fd715b49b112aa61c014736, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7454341004718019737, guid: caf7b17b3fd715b49b112aa61c014736, type: 3}
       propertyPath: m_Transition
       value: 1

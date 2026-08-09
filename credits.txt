@@ -12,3 +12,22 @@ GUI: Fantasy Wooden GUI by Black Hammer https://assetstore.unity.com/packages/2d
 
 Sounds: Minimal UI Sounds by cabled_mess https://assetstore.unity.com/packages/audio/sound-fx/minimal-ui-sounds-78266#description
 
+Ambient Sound: Nature essentials by Nox_Sound https://assetstore.unity.com/packages/audio/ambient/nature/nature-essentials-208227
+
+Icon: Home free icon by Magnific https://www.flaticon.com/free-icon/home_263115?term=home&page=1&position=8&origin=search&related_id=263115
+
+Icon: Settings free icon by Pixel perfect https://www.flaticon.com/free-icon/settings_3524636?term=gear&page=1&position=6&origin=search&related_id=3524636
+
+Icon: Yoga free icon by Mayor icons https://www.flaticon.com/free-icon/yoga_9289735?term=relax&page=1&position=59&origin=search&related_id=9289735
+
+Icon: Cream free icon by Sir. Vector https://www.flaticon.com/free-icon/cream_11061069?term=calm&page=1&position=74&origin=search&related_id=11061069
+
+Icon: Breath free icon by cube29 https://www.flaticon.com/free-icon/breath_1726035?term=breathing&page=1&position=2&origin=search&related_id=1726035
+
+Icon: Clipboard free icon by Kiranshastry https://www.flaticon.com/free-icon/clipboard_839860?term=clipboard&page=1&position=1&origin=search&related_id=839860
+
+Icon: Calendar free icon by Magnific https://www.flaticon.com/free-icon/calendar_2370264?term=calendar&page=1&position=7&origin=search&related_id=2370264
+
+Icon: Friends free icon by Magnific https://www.flaticon.com/free-icon/friends_1441180?term=friend&page=1&position=3&origin=search&related_id=1441180
+
+

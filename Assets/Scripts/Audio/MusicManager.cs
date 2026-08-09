@@ -50,11 +50,11 @@ public class MusicManager : MonoBehaviour
         sfxSource.PlayOneShot(clip, volume);
     }
 
-    public void PlayAmbiance(AudioClip clip)
+    public void PlayAmbiance(AudioClip clip, float volume = 1f)
     {
         if (clip == null || ambianceSource == null) return;
         if (ambianceCoroutine != null) StopCoroutine(ambianceCoroutine);
-        ambianceCoroutine = StartCoroutine(AmbianceCrossfadeRoutine(clip));
+        ambianceCoroutine = StartCoroutine(AmbianceCrossfadeRoutine(clip, volume));
     }
 
     public void StopAmbiance()
@@ -64,11 +64,10 @@ public class MusicManager : MonoBehaviour
         ambianceCoroutine = StartCoroutine(AmbianceFadeOutRoutine());
     }
 
-    private IEnumerator AmbianceCrossfadeRoutine(AudioClip newClip)
+    private IEnumerator AmbianceCrossfadeRoutine(AudioClip newClip, float targetVolume)
     {
         float elapsed = 0f;
         float startVolume = ambianceSource.isPlaying ? ambianceSource.volume : 0f;
-        float targetVolume = ambianceSource.volume > 0f ? ambianceSource.volume : 1f;
 
         while (elapsed < crossfadeDuration * 0.5f)
         {
