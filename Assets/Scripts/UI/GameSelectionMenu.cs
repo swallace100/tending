@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -11,7 +10,7 @@ public class GameSelectionMenu : MonoBehaviour
     {
         public string displayName;
         [TextArea] public string description;
-        public string sceneName;
+        public GameObject gameplayObject;
     }
 
     [SerializeField] private GameOption[] games;
@@ -19,6 +18,7 @@ public class GameSelectionMenu : MonoBehaviour
     [Header("Panels")]
     [SerializeField] private GameObject gameButtonsPanel;
     [SerializeField] private GameObject descriptionPanel;
+    [SerializeField] private GameObject gamePanel;
 
     [Header("Description Panel References")]
     [SerializeField] private TextMeshProUGUI titleText;
@@ -54,7 +54,24 @@ public class GameSelectionMenu : MonoBehaviour
 
     private void StartSelectedGame()
     {
-        if (selectedGame == null || string.IsNullOrEmpty(selectedGame.sceneName)) return;
-        SceneManager.LoadScene(selectedGame.sceneName);
+        if (selectedGame == null || !selectedGame.gameplayObject) return;
+
+        descriptionPanel.SetActive(false);
+        gamePanel.SetActive(true);
+
+        foreach (GameOption game in games)
+            if (game.gameplayObject)
+                game.gameplayObject.SetActive(game == selectedGame);
+    }
+
+    // Wire each game's own "onComplete"/"onStop" UnityEvent (or a dedicated back button) to this.
+    public void ReturnFromGame()
+    {
+        if (selectedGame != null && selectedGame.gameplayObject)
+            selectedGame.gameplayObject.SetActive(false);
+
+        gamePanel.SetActive(false);
+        gameButtonsPanel.SetActive(true);
+        selectedGame = null;
     }
 }
