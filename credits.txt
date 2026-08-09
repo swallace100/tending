@@ -10,7 +10,5 @@ Font: Roboto by Google Android Design https://www.dafont.com/roboto.font
 
 GUI: Fantasy Wooden GUI by Black Hammer https://assetstore.unity.com/packages/2d/gui/fantasy-wooden-gui-free-103811
 
-Buttons: Lonely Goblin https://www.vecteezy.com/vector-art/11017821-simple-retro-8-bit-game-button
-
-
+Sounds: Minimal UI Sounds by cabled_mess https://assetstore.unity.com/packages/audio/sound-fx/minimal-ui-sounds-78266#description
 

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: UIButtonSoundSettings_Default
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonSoundSettings
   hoverSound: {fileID: 8300000, guid: dc71cf8ca14c33f45840274c1e7a067c, type: 3}
-  clickSound: {fileID: 8300000, guid: 5df13d80ef070654aa8b53f441c5a60b, type: 3}
+  clickSound: {fileID: 8300000, guid: 99348d26b121bdf40bca2ff30b000207, type: 3}
   mixerGroup: {fileID: 7058643810674694418, guid: 16effb4a4bb5aad48b89569917402f9b, type: 2}
   volume: 1
