@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using UnityEngine.Events;
 using TMPro;
 
 public class GroundingExercise : MonoBehaviour
@@ -38,8 +37,6 @@ public class GroundingExercise : MonoBehaviour
 
     [Header("Complete Panel References")]
     [SerializeField] private TextMeshProUGUI summaryText;
-
-    [SerializeField] private UnityEvent onComplete;
 
     private int orientationIndex;
     private int touchedCount;
@@ -122,7 +119,5 @@ public class GroundingExercise : MonoBehaviour
                 sb.AppendLine($"- {item}");
             summaryText.text = sb.ToString();
         }
-
-        onComplete?.Invoke();
     }
 }

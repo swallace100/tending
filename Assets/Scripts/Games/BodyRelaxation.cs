@@ -13,7 +13,7 @@ public class BodyRelaxation : MonoBehaviour
         public bool canTense = true;
         [TextArea] public string tenseInstruction;
         [TextArea] public string relaxInstruction;
-        public float tenseDuration = 5f;
+        public float tenseDuration = 10f;
         public float relaxDuration = 10f;
     }
 
@@ -83,6 +83,10 @@ public class BodyRelaxation : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private Image timerFillImage;
 
+    [Header("Complete Panel References")]
+    [SerializeField] private TextMeshProUGUI completeText;
+    [TextArea][SerializeField] private string completeMessage = "You've relaxed your whole body. Carry this feeling with you today.";
+
     private bool isPaused;
     private bool skipRequested;
     private Coroutine sequenceRoutine;
@@ -127,6 +131,7 @@ public class BodyRelaxation : MonoBehaviour
 
         stepPanel.SetActive(false);
         completePanel.SetActive(true);
+        if (completeText) completeText.text = completeMessage;
     }
 
     private IEnumerator RunPhase(string instruction, float duration)
