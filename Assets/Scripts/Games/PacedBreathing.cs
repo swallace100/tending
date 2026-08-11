@@ -29,9 +29,11 @@ public class PacedBreathing : MonoBehaviour
     [SerializeField] private UnityEvent onStop;
 
     private Coroutine breathingRoutine;
+    private bool isPaused;
 
     private void OnEnable()
     {
+        isPaused = false;
         if (breathAudioSource) breathAudioSource.outputAudioMixerGroup = mixerGroup;
         breathingRoutine = StartCoroutine(BreathingLoop());
     }
@@ -49,6 +51,17 @@ public class PacedBreathing : MonoBehaviour
         breathingRoutine = null;
         if (breathAudioSource) breathAudioSource.Stop();
         onStop?.Invoke();
+    }
+
+    // Wire a Pause button to this.
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
+        if (breathAudioSource)
+        {
+            if (isPaused) breathAudioSource.Pause();
+            else breathAudioSource.UnPause();
+        }
     }
 
     private IEnumerator BreathingLoop()
@@ -74,11 +87,14 @@ public class PacedBreathing : MonoBehaviour
         float elapsed = 0f;
         while (elapsed < duration)
         {
-            elapsed += Time.deltaTime;
-            if (breathingCircle)
+            if (!isPaused)
             {
-                float scale = Mathf.Lerp(fromScale, toScale, elapsed / duration);
-                breathingCircle.localScale = new Vector3(scale, scale, 1f);
+                elapsed += Time.deltaTime;
+                if (breathingCircle)
+                {
+                    float scale = Mathf.Lerp(fromScale, toScale, elapsed / duration);
+                    breathingCircle.localScale = new Vector3(scale, scale, 1f);
+                }
             }
             yield return null;
         }

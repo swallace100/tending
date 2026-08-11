@@ -29,6 +29,7 @@ public class GroundingExercise : MonoBehaviour
     [Header("Orientation Panel References")]
     [SerializeField] private TextMeshProUGUI orientationQuestionText;
     [SerializeField] private TextMeshProUGUI orientationProgressText;
+    [SerializeField] private TMP_InputField orientationAnswerInputField;
 
     [Header("Touch Panel References")]
     [SerializeField] private TextMeshProUGUI touchInstructionText;
@@ -40,12 +41,14 @@ public class GroundingExercise : MonoBehaviour
 
     private int orientationIndex;
     private int touchedCount;
+    private readonly List<string> orientationAnswers = new();
     private readonly List<string> touchedItems = new();
 
     private void OnEnable()
     {
         orientationIndex = 0;
         touchedCount = 0;
+        orientationAnswers.Clear();
         touchedItems.Clear();
 
         orientationPanel.SetActive(true);
@@ -59,11 +62,16 @@ public class GroundingExercise : MonoBehaviour
     {
         orientationQuestionText.text = orientationQuestions[orientationIndex];
         orientationProgressText.text = $"{orientationIndex + 1} / {orientationQuestions.Length}";
+        if (orientationAnswerInputField) orientationAnswerInputField.text = string.Empty;
     }
 
     // Wire the orientation panel's Next button to this. No auto-advance - the player moves at their own pace.
     public void AdvanceOrientation()
     {
+        string answer = orientationAnswerInputField ? orientationAnswerInputField.text.Trim() : string.Empty;
+        if (!string.IsNullOrEmpty(answer))
+            orientationAnswers.Add(answer);
+
         orientationIndex++;
         if (orientationIndex >= orientationQuestions.Length)
         {
@@ -114,6 +122,13 @@ public class GroundingExercise : MonoBehaviour
         if (summaryText)
         {
             StringBuilder sb = new();
+            if (orientationAnswers.Count > 0)
+            {
+                sb.AppendLine("You oriented yourself with:");
+                foreach (string answer in orientationAnswers)
+                    sb.AppendLine($"- {answer}");
+                sb.AppendLine();
+            }
             sb.AppendLine("You grounded yourself with:");
             foreach (string item in touchedItems)
                 sb.AppendLine($"- {item}");
