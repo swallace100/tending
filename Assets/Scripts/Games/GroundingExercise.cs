@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEngine.UIElements;
 
 public class GroundingExercise : MonoBehaviour
 {
@@ -19,7 +21,7 @@ public class GroundingExercise : MonoBehaviour
     [TextArea]
     [SerializeField]
     private string touchInstruction =
-        "Touch something near you and say its name out loud if you can.\nIf nothing is nearby, you can touch a body part instead.";
+        "Touch 5 items near you and say their names out loud if you can.\nA part of your body is fine.";
 
     [Header("Panels")]
     [SerializeField] private GameObject orientationPanel;
@@ -125,13 +127,16 @@ public class GroundingExercise : MonoBehaviour
             if (orientationAnswers.Count > 0)
             {
                 sb.AppendLine("You oriented yourself with:");
-                foreach (string answer in orientationAnswers)
-                    sb.AppendLine($"- {answer}");
                 sb.AppendLine();
+                sb.AppendLine(string.Join(", ", orientationAnswers));
+                sb.AppendLine();
+                sb.AppendLine("You grounded yourself with:");
+                sb.AppendLine();
+                sb.AppendLine(string.Join(", ", touchedItems));
+                sb.AppendLine();
+
+                sb.AppendLine("Carry this grounded feeling with you today.");
             }
-            sb.AppendLine("You grounded yourself with:");
-            foreach (string item in touchedItems)
-                sb.AppendLine($"- {item}");
             summaryText.text = sb.ToString();
         }
     }

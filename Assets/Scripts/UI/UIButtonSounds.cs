@@ -9,9 +9,13 @@ public class UIButtonSoundSettings : ScriptableObject
     public AudioClip clickSound;
     public AudioMixerGroup mixerGroup;
     [Range(0f, 1f)] public float volume = 1f;
+
+    [Header("Cursor")]
+    public Texture2D handCursor;
+    public Vector2 handCursorHotspot;
 }
 
-public class UIButtonSounds : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
+public class UIButtonSounds : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] private UIButtonSoundSettings settings;
 
@@ -19,6 +23,15 @@ public class UIButtonSounds : MonoBehaviour, IPointerEnterHandler, IPointerClick
     {
         if (settings && settings.hoverSound)
             MusicManager.Instance?.PlaySFX(settings.hoverSound, settings.mixerGroup, 1f, settings.volume);
+
+        if (settings && settings.handCursor)
+            Cursor.SetCursor(settings.handCursor, settings.handCursorHotspot, CursorMode.Auto);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (settings && settings.handCursor)
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
 
     public void OnPointerClick(PointerEventData eventData)
