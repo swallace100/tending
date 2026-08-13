@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Events;
+using UnityEngine.UI;
 using TMPro;
 
 public class PacedBreathing : MonoBehaviour
@@ -30,11 +31,13 @@ public class PacedBreathing : MonoBehaviour
 
     private Coroutine breathingRoutine;
     private bool isPaused;
+    private Image breathingCircleImage;
 
     private void OnEnable()
     {
         isPaused = false;
         if (breathAudioSource) breathAudioSource.outputAudioMixerGroup = mixerGroup;
+        if (breathingCircle) breathingCircleImage = breathingCircle.GetComponent<Image>();
         breathingRoutine = StartCoroutine(BreathingLoop());
     }
 
@@ -94,6 +97,10 @@ public class PacedBreathing : MonoBehaviour
                 {
                     float scale = Mathf.Lerp(fromScale, toScale, elapsed / duration);
                     breathingCircle.localScale = new Vector3(scale, scale, 1f);
+                }
+                if (breathingCircleImage)
+                {
+                    breathingCircleImage.fillAmount = 1f - (elapsed / duration);
                 }
             }
             yield return null;

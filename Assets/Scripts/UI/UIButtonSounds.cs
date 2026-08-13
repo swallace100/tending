@@ -38,5 +38,8 @@ public class UIButtonSounds : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         if (settings && settings.clickSound)
             MusicManager.Instance?.PlaySFX(settings.clickSound, settings.mixerGroup, 1f, settings.volume);
+
+        if (settings && settings.handCursor)
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
 }
