@@ -95,7 +95,10 @@ public class PacedBreathing : MonoBehaviour
                 elapsed += Time.deltaTime;
                 if (breathingCircle)
                 {
-                    float scale = Mathf.Lerp(fromScale, toScale, elapsed / duration);
+                    // Reduce-motion: keep the circle still; the label and fill timer still pace the breath.
+                    float scale = AccessibilityOptions.ReduceMotion
+                        ? 1f
+                        : Mathf.Lerp(fromScale, toScale, elapsed / duration);
                     breathingCircle.localScale = new Vector3(scale, scale, 1f);
                 }
                 if (breathingCircleImage)
