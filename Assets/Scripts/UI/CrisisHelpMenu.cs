@@ -14,10 +14,9 @@ public class CrisisHelpMenu : MonoBehaviour
     [SerializeField]
     private string helpMessage =
         "If you are in crisis or need support right now, you are not alone.\n\n" +
-        "United States: call or text 988 to reach the Suicide & Crisis Lifeline, any time, day or night.\n\n" +
-        "Outside the US: visit findahelpline.com, or search for \"crisis line\" and your country's name to find a local number.\n\n" +
-        "If you are in immediate danger, call your local emergency number (911 in the US).\n\n" +
-        "This app is a self-care companion. It is not a substitute for professional mental health care.";
+        "United States: Call or text 988 to reach the Suicide & Crisis Lifeline at any time.\n\n" +
+        "Outside the US: Visit findahelpline.com or search for \"crisis line\" at your location.\n\n" +
+        "If you are in immediate danger, please call your local emergency number (911 in the US).";
 
     private void Awake()
     {

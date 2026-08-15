@@ -23,7 +23,7 @@ public class SelfCheckIn : MonoBehaviour
         new CheckInQuestion { questionText = "Are you hungry?", discomfortLabel = "Hungry", suggestion = "Have a snack or plan your next meal." },
         new CheckInQuestion { questionText = "Are you thirsty?", discomfortLabel = "Thirsty", suggestion = "Drink some water." },
         new CheckInQuestion { questionText = "Are you tired?", discomfortLabel = "Tired", suggestion = "Rest if you can, even for a few minutes." },
-        new CheckInQuestion { questionText = "Do you need to use the restroom?", discomfortLabel = "Restroom", suggestion = "Take a break to go." },
+        new CheckInQuestion { questionText = "Do you need to use the restroom?", discomfortLabel = "Restroom", suggestion = "Take a break to use the restoom." },
         new CheckInQuestion { questionText = "Are you in any physical pain?", discomfortLabel = "In pain", suggestion = "See what you can do to aleve the pain and see a doctor if needed." },
         new CheckInQuestion { questionText = "Are you feeling overwhelmed?", discomfortLabel = "Overwhelmed", suggestion = "Try a grounding or breathing exercise." },
         new CheckInQuestion { questionText = "Are you feeling lonely?", discomfortLabel = "Lonely", suggestion = "Try reaching out to someone you trust and say hi." },
@@ -38,6 +38,7 @@ public class SelfCheckIn : MonoBehaviour
     [SerializeField] private TextMeshProUGUI progressText;
 
     [Header("Results Panel References")]
+    [SerializeField] private string resultTitle = "Here is some possible advice:";
     [SerializeField] private TextMeshProUGUI resultsText;
     [SerializeField] private string noFlagsMessage = "It seems like you're doing well. Enjoy your day.";
 
@@ -103,6 +104,7 @@ public class SelfCheckIn : MonoBehaviour
         else
         {
             StringBuilder sb = new();
+            sb.AppendLine(resultTitle);
             foreach (CheckInQuestion question in flagged)
             {
                 sb.AppendLine($"- {question.suggestion}");

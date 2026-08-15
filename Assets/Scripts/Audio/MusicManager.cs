@@ -31,7 +31,17 @@ public class MusicManager : MonoBehaviour
         if (ambianceSource == null) ambianceSource = transform.Find("Ambiance")?.GetComponent<AudioSource>();
 
         ApplyVolume();
+        StartCoroutine(ReapplyVolumeNextFrame());
         StartCoroutine(PlayBGMWhenReady());
+    }
+
+    private IEnumerator ReapplyVolumeNextFrame()
+    {
+        // In the Editor, AudioMixer.SetFloat calls made in Awake can be silently
+        // dropped because the mixer's DSP graph isn't built yet. Reapplying a
+        // frame later ensures the saved volume actually takes effect.
+        yield return null;
+        ApplyVolume();
     }
 
     private IEnumerator PlayBGMWhenReady()
