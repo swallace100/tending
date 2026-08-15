@@ -2,9 +2,9 @@ using UnityEngine;
 using TMPro;
 
 // Attach anywhere persistent (e.g. the Canvas). Wire the "?" button's OnClick
-// to OpenHelpPanel and the panel's close button to CloseHelpPanel. If helpText
-// is wired, the default message below fills it, so the panel needs no authored
-// copy - edit the message here or override it in the Inspector.
+// to ToggleHelpPanel. If helpText is wired, the default message below fills
+// it, so the panel needs no authored copy - edit the message here or
+// override it in the Inspector.
 public class CrisisHelpMenu : MonoBehaviour
 {
     [SerializeField] private GameObject helpPanel;
@@ -24,13 +24,8 @@ public class CrisisHelpMenu : MonoBehaviour
         if (helpText) helpText.text = helpMessage;
     }
 
-    public void OpenHelpPanel()
+    public void ToggleHelpPanel()
     {
-        if (helpPanel) helpPanel.SetActive(true);
-    }
-
-    public void CloseHelpPanel()
-    {
-        if (helpPanel) helpPanel.SetActive(false);
+        if (helpPanel) helpPanel.SetActive(!helpPanel.activeSelf);
     }
 }

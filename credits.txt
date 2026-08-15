@@ -37,3 +37,5 @@ Icon: Close free icon by joalfa
 Icon: Hand Pointer free icon https://www.flaticon.com/free-icon/hand-pointer_109167?term=pointer&page=1&position=13&origin=search&related_id=109167
 
 Sound: Breathing by LexieVA https://pixabay.com/sound-effects/people-female-sigh-149495/
+
+Icon: Ask free icon by Magnific https://www.flaticon.com/free-icon/ask_2859733?term=question+mark&page=1&position=19&origin=search&related_id=2859733
