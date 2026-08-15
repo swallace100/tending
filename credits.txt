@@ -2,8 +2,6 @@ Background: Animated Pixel Art Background by Feony Labs: https://assetstore.unit
 
 Music: Nordic Landscape by John French https://assetstore.unity.com/packages/audio/music/orchestral/nordic-landscape-68652
 
-Font: Silkscreen by Jason Aleksandr Kottke https://www.dafont.com/silkscreen.font
-
 Font: Apple Garamnt https://www.dafont.com/apple-garamond.font
 
 Font: Roboto by Google Android Design https://www.dafont.com/roboto.font
@@ -26,8 +24,6 @@ Icon: Breath free icon by cube29 https://www.flaticon.com/free-icon/breath_17260
 
 Icon: Clipboard free icon by Kiranshastry https://www.flaticon.com/free-icon/clipboard_839860?term=clipboard&page=1&position=1&origin=search&related_id=839860
 
-Icon: Calendar free icon by Magnific https://www.flaticon.com/free-icon/calendar_2370264?term=calendar&page=1&position=7&origin=search&related_id=2370264
-
 Icon: Friends free icon by Magnific https://www.flaticon.com/free-icon/friends_1441180?term=friend&page=1&position=3&origin=search&related_id=1441180
 
 Icon: Pause  free icon by rezamr https://www.flaticon.com/free-icon/pause_11085782?term=pause&page=1&position=4&origin=search&related_id=11085782
@@ -35,7 +31,5 @@ Icon: Pause  free icon by rezamr https://www.flaticon.com/free-icon/pause_110857
 Icon: Close free icon by joalfa
 
 Icon: Hand Pointer free icon https://www.flaticon.com/free-icon/hand-pointer_109167?term=pointer&page=1&position=13&origin=search&related_id=109167
-
-Sound: Breathing by LexieVA https://pixabay.com/sound-effects/people-female-sigh-149495/
 
 Icon: Ask free icon by Magnific https://www.flaticon.com/free-icon/ask_2859733?term=question+mark&page=1&position=19&origin=search&related_id=2859733
