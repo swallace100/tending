@@ -269,22 +269,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: VoiceText
       objectReference: {fileID: 0}
-    - target: {fileID: 630491304141449540, guid: 2b3d2e1455b283449904a1b70ee4e6fd, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 800
-      objectReference: {fileID: 0}
-    - target: {fileID: 630491304141449540, guid: 2b3d2e1455b283449904a1b70ee4e6fd, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 450
-      objectReference: {fileID: 0}
-    - target: {fileID: 630491304141449540, guid: 2b3d2e1455b283449904a1b70ee4e6fd, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 630491304141449540, guid: 2b3d2e1455b283449904a1b70ee4e6fd, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1328868432763815821, guid: 2b3d2e1455b283449904a1b70ee4e6fd, type: 3}
       propertyPath: m_Name
       value: ProgrammerText
@@ -479,11 +463,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7522471547114662928, guid: 2b3d2e1455b283449904a1b70ee4e6fd, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -1918
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7522471547114662928, guid: 2b3d2e1455b283449904a1b70ee4e6fd, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -928
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7522471547114662928, guid: 2b3d2e1455b283449904a1b70ee4e6fd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -788,7 +772,7 @@ PrefabInstance:
     - target: {fileID: 4045115779617507862, guid: d08fe4e8a67571f4e863fca94af13c19, type: 3}
       propertyPath: m_Resource
       value: 
-      objectReference: {fileID: 8300000, guid: ae6d2e4dc04f84f2a9eea526b8cf335a, type: 3}
+      objectReference: {fileID: 8300000, guid: fd82db35d57fb1d4782de5b53f0d56f1, type: 3}
     - target: {fileID: 7911646619771642051, guid: d08fe4e8a67571f4e863fca94af13c19, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.23037
@@ -2079,11 +2063,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7522471547114662928, guid: 2b3d2e1455b283449904a1b70ee4e6fd, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -1918
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7522471547114662928, guid: 2b3d2e1455b283449904a1b70ee4e6fd, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -928
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7522471547114662928, guid: 2b3d2e1455b283449904a1b70ee4e6fd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3103,10 +3087,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 38655592}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -4}
-  m_SizeDelta: {x: 100, y: -50}
+  m_SizeDelta: {x: 102, y: 102}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2077986653
 MonoBehaviour:
@@ -3132,8 +3116,8 @@ MonoBehaviour:
     are based on current research on C-PTSD recovery. No data is saved or shared.\n\nThis
     is not a substitute for professional mental health care. If you are in crisis,
     please call or text 988 (Suicide & Crisis Lifeline) or contact your local emergency
-    services.\n\nDesigned and created by Steven Wallace \nHack for Humanity Summer
-    2026 submission"
+    services.\n\nDesigned and created by Steven Wallace \nMusic By: arxhqrx \nHack
+    for Humanity Summer 2026 submission"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 827c93c421ce44d4fa42fa5c23608a59, type: 2}
   m_sharedMaterial: {fileID: 9203898630541265201, guid: 827c93c421ce44d4fa42fa5c23608a59, type: 2}

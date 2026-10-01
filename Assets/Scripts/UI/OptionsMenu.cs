@@ -48,19 +48,12 @@ public class OptionsMenu : MonoBehaviour
         Options.SFXVolume = fxSlider.value;
         Options.Save();
 
-        audioMixer.SetFloat("MasterVolume", ToDecibels(Options.MasterVolume));
-        audioMixer.SetFloat("BGMVolume", ToDecibels(Options.BGMVolume));
-        audioMixer.SetFloat("SFXVolume", ToDecibels(Options.SFXVolume));
+        Options.ApplyTo(audioMixer);
     }
 
     public void OnCloseButton()
     {
         Apply();
         gameObject.SetActive(false);
-    }
-
-    private float ToDecibels(float volume)
-    {
-        return volume > 0.0001f ? Mathf.Log10(volume) * 20f : -80f;
     }
 }

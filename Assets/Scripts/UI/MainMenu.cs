@@ -14,8 +14,11 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        if (eventsHandler) eventsHandler.PlayMusic();
-        if (eventsHandler) eventsHandler.PlayAmbianceMusic();
+        if (eventsHandler)
+        {
+            eventsHandler.PlayMusic();
+            eventsHandler.PlayAmbianceMusic();
+        }
 
 #if UNITY_WEBGL
         if (quitButton) quitButton.SetActive(false);

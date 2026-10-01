@@ -15,6 +15,12 @@ public class MusicManager : MonoBehaviour
     private Coroutine musicCoroutine;
     private Coroutine ambianceCoroutine;
 
+    // The clip each channel is playing or fading towards (null once stopped).
+    // Used to skip restarting a track that's already playing, e.g. when
+    // returning to the main menu.
+    private AudioClip musicTarget;
+    private AudioClip ambianceTarget;
+
     private void Awake()
     {
         if (Instance != null)
@@ -25,10 +31,12 @@ public class MusicManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        Debug.unityLogger.logEnabled = Debug.isDebugBuild;
 
         if (sfxSource == null) sfxSource = transform.Find("SFX")?.GetComponent<AudioSource>();
         if (ambianceSource == null) ambianceSource = transform.Find("Ambiance")?.GetComponent<AudioSource>();
+
+        musicTarget = audioSource.playOnAwake ? audioSource.clip : null;
+        ambianceTarget = ambianceSource != null && ambianceSource.playOnAwake ? ambianceSource.clip : null;
 
         ApplyVolume();
         StartCoroutine(ReapplyVolumeNextFrame());
@@ -46,154 +54,84 @@ public class MusicManager : MonoBehaviour
 
     private IEnumerator PlayBGMWhenReady()
     {
-        while (!audioSource.isPlaying)
+        // Keeps retrying until playback actually starts (e.g. WebGL blocks audio
+        // until the first user interaction). Gives up if the music is stopped.
+        while (musicTarget != null && !audioSource.isPlaying)
         {
             audioSource.Play();
             yield return new WaitForSecondsRealtime(0.5f);
         }
     }
 
-    public void PlaySFX(AudioClip clip, AudioMixerGroup mixerGroup, float pitch = 1f, float volume = 1f)
+    public void ApplyVolume()
+    {
+        Options.ApplyTo(audioMixer);
+    }
+
+    public void PlaySFX(AudioClip clip, float volume = 1f)
     {
         if (clip == null || sfxSource == null) return;
-        sfxSource.pitch = pitch;
         sfxSource.PlayOneShot(clip, volume);
-    }
-
-    public void PlayAmbiance(AudioClip clip, float volume = 1f)
-    {
-        if (clip == null || ambianceSource == null) return;
-        if (ambianceCoroutine != null) StopCoroutine(ambianceCoroutine);
-        ambianceCoroutine = StartCoroutine(AmbianceCrossfadeRoutine(clip, volume));
-    }
-
-    public void StopAmbiance()
-    {
-        if (ambianceSource == null) return;
-        if (ambianceCoroutine != null) StopCoroutine(ambianceCoroutine);
-        ambianceCoroutine = StartCoroutine(AmbianceFadeOutRoutine());
-    }
-
-    private IEnumerator AmbianceCrossfadeRoutine(AudioClip newClip, float targetVolume)
-    {
-        float elapsed = 0f;
-        float startVolume = ambianceSource.isPlaying ? ambianceSource.volume : 0f;
-
-        while (elapsed < crossfadeDuration * 0.5f)
-        {
-            elapsed += Time.unscaledDeltaTime;
-            ambianceSource.volume = Mathf.Lerp(startVolume, 0f, elapsed / (crossfadeDuration * 0.5f));
-            yield return null;
-        }
-
-        ambianceSource.Stop();
-        ambianceSource.clip = newClip;
-        ambianceSource.volume = 0f;
-        ambianceSource.loop = true;
-        ambianceSource.Play();
-
-        elapsed = 0f;
-        while (elapsed < crossfadeDuration * 0.5f)
-        {
-            elapsed += Time.unscaledDeltaTime;
-            ambianceSource.volume = Mathf.Lerp(0f, targetVolume, elapsed / (crossfadeDuration * 0.5f));
-            yield return null;
-        }
-
-        ambianceSource.volume = targetVolume;
-    }
-
-    private IEnumerator AmbianceFadeOutRoutine()
-    {
-        float elapsed = 0f;
-        float startVolume = ambianceSource.volume;
-
-        while (elapsed < crossfadeDuration)
-        {
-            elapsed += Time.unscaledDeltaTime;
-            ambianceSource.volume = Mathf.Lerp(startVolume, 0f, elapsed / crossfadeDuration);
-            yield return null;
-        }
-
-        ambianceSource.Stop();
-        ambianceSource.volume = startVolume;
     }
 
     public void PlayMusic(AudioClip clip, float volume = 1f)
     {
-        if (clip == null) return;
+        if (clip == null || clip == musicTarget) return;
+        musicTarget = clip;
         if (musicCoroutine != null) StopCoroutine(musicCoroutine);
-        musicCoroutine = StartCoroutine(CrossfadeRoutine(clip, volume));
+        musicCoroutine = StartCoroutine(CrossfadeRoutine(audioSource, clip, volume, true));
     }
 
     public void PlayMusicWithIntro(AudioClip intro, AudioClip loop, float volume = 1f)
     {
-        if (intro == null || loop == null) return;
+        if (intro == null || loop == null || loop == musicTarget) return;
+        musicTarget = loop;
         if (musicCoroutine != null) StopCoroutine(musicCoroutine);
         musicCoroutine = StartCoroutine(IntroLoopRoutine(intro, loop, volume));
     }
 
     public void StopMusic()
     {
+        musicTarget = null;
         if (musicCoroutine != null) StopCoroutine(musicCoroutine);
-        musicCoroutine = StartCoroutine(FadeOutRoutine());
+        musicCoroutine = StartCoroutine(FadeOutRoutine(audioSource));
     }
 
-    private IEnumerator CrossfadeRoutine(AudioClip newClip, float targetVolume)
+    public void PlayAmbiance(AudioClip clip, float volume = 1f)
     {
-        float elapsed = 0f;
-        float startVolume = audioSource.volume;
+        if (clip == null || ambianceSource == null || clip == ambianceTarget) return;
+        ambianceTarget = clip;
+        if (ambianceCoroutine != null) StopCoroutine(ambianceCoroutine);
+        ambianceCoroutine = StartCoroutine(CrossfadeRoutine(ambianceSource, clip, volume, true));
+    }
 
-        while (elapsed < crossfadeDuration * 0.5f)
-        {
-            elapsed += Time.unscaledDeltaTime;
-            audioSource.volume = Mathf.Lerp(startVolume, 0f, elapsed / (crossfadeDuration * 0.5f));
-            yield return null;
-        }
+    public void StopAmbiance()
+    {
+        if (ambianceSource == null) return;
+        ambianceTarget = null;
+        if (ambianceCoroutine != null) StopCoroutine(ambianceCoroutine);
+        ambianceCoroutine = StartCoroutine(FadeOutRoutine(ambianceSource));
+    }
 
-        audioSource.Stop();
-        audioSource.clip = newClip;
-        audioSource.volume = 0f;
-        audioSource.Play();
+    private IEnumerator CrossfadeRoutine(AudioSource source, AudioClip newClip, float targetVolume, bool loop)
+    {
+        float halfDuration = crossfadeDuration * 0.5f;
 
-        elapsed = 0f;
-        while (elapsed < crossfadeDuration * 0.5f)
-        {
-            elapsed += Time.unscaledDeltaTime;
-            audioSource.volume = Mathf.Lerp(0f, targetVolume, elapsed / (crossfadeDuration * 0.5f));
-            yield return null;
-        }
+        if (source.isPlaying)
+            yield return FadeRoutine(source, source.volume, 0f, halfDuration);
 
-        audioSource.volume = targetVolume;
+        source.Stop();
+        source.clip = newClip;
+        source.loop = loop;
+        source.volume = 0f;
+        source.Play();
+
+        yield return FadeRoutine(source, 0f, targetVolume, halfDuration);
     }
 
     private IEnumerator IntroLoopRoutine(AudioClip intro, AudioClip loop, float targetVolume)
     {
-        float elapsed = 0f;
-        float startVolume = audioSource.isPlaying ? audioSource.volume : targetVolume;
-
-        while (elapsed < crossfadeDuration * 0.5f)
-        {
-            elapsed += Time.unscaledDeltaTime;
-            audioSource.volume = Mathf.Lerp(startVolume, 0f, elapsed / (crossfadeDuration * 0.5f));
-            yield return null;
-        }
-
-        audioSource.Stop();
-        audioSource.loop = false;
-        audioSource.clip = intro;
-        audioSource.volume = 0f;
-        audioSource.Play();
-
-        elapsed = 0f;
-        while (elapsed < crossfadeDuration * 0.5f)
-        {
-            elapsed += Time.unscaledDeltaTime;
-            audioSource.volume = Mathf.Lerp(0f, targetVolume, elapsed / (crossfadeDuration * 0.5f));
-            yield return null;
-        }
-        audioSource.volume = targetVolume;
-
+        yield return CrossfadeRoutine(audioSource, intro, targetVolume, false);
         yield return new WaitUntil(() => !audioSource.isPlaying);
 
         audioSource.clip = loop;
@@ -201,31 +139,24 @@ public class MusicManager : MonoBehaviour
         audioSource.Play();
     }
 
-    private IEnumerator FadeOutRoutine()
+    private IEnumerator FadeOutRoutine(AudioSource source)
+    {
+        float startVolume = source.volume;
+        yield return FadeRoutine(source, startVolume, 0f, crossfadeDuration);
+
+        source.Stop();
+        source.volume = startVolume;
+    }
+
+    private IEnumerator FadeRoutine(AudioSource source, float from, float to, float duration)
     {
         float elapsed = 0f;
-        float startVolume = audioSource.volume;
-
-        while (elapsed < crossfadeDuration)
+        while (elapsed < duration)
         {
             elapsed += Time.unscaledDeltaTime;
-            audioSource.volume = Mathf.Lerp(startVolume, 0f, elapsed / crossfadeDuration);
+            source.volume = Mathf.Lerp(from, to, elapsed / duration);
             yield return null;
         }
-
-        audioSource.Stop();
-        audioSource.volume = startVolume;
-    }
-
-    private void ApplyVolume()
-    {
-        audioMixer.SetFloat("MasterVolume", ToDecibels(Options.MasterVolume));
-        audioMixer.SetFloat("BGMVolume", ToDecibels(Options.BGMVolume));
-        audioMixer.SetFloat("SFXVolume", ToDecibels(Options.SFXVolume));
-    }
-
-    private float ToDecibels(float volume)
-    {
-        return volume > 0.0001f ? Mathf.Log10(volume) * 20f : -80f;
+        source.volume = to;
     }
 }

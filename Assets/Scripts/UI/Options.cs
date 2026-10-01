@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Options
 {
@@ -12,5 +13,18 @@ public class Options
         PlayerPrefs.SetFloat("BGMVolume", BGMVolume);
         PlayerPrefs.SetFloat("SFXVolume", SFXVolume);
         PlayerPrefs.Save();
+    }
+
+    public static void ApplyTo(AudioMixer mixer)
+    {
+        if (mixer == null) return;
+        mixer.SetFloat("MasterVolume", ToDecibels(MasterVolume));
+        mixer.SetFloat("BGMVolume", ToDecibels(BGMVolume));
+        mixer.SetFloat("SFXVolume", ToDecibels(SFXVolume));
+    }
+
+    private static float ToDecibels(float volume)
+    {
+        return volume > 0.0001f ? Mathf.Log10(volume) * 20f : -80f;
     }
 }

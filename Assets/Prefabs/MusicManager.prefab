@@ -50,7 +50,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MusicManager
   audioSource: {fileID: 4045115779617507862}
   sfxSource: {fileID: 1935950350930267523}
-  voiceSource: {fileID: 649429016069706598}
   ambianceSource: {fileID: 1366682970681872642}
   audioMixer: {fileID: 24100000, guid: 16effb4a4bb5aad48b89569917402f9b, type: 2}
   crossfadeDuration: 1
@@ -97,7 +96,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 6154931599697280615, guid: 16effb4a4bb5aad48b89569917402f9b, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 6a339ed2c93166843b8d69cdd95158b3, type: 3}
+  m_Resource: {fileID: 8300000, guid: fd82db35d57fb1d4782de5b53f0d56f1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.25
   m_Pitch: 1
