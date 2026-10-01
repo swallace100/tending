@@ -3028,7 +3028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4045115779617507862, guid: d08fe4e8a67571f4e863fca94af13c19, type: 3}
       propertyPath: m_Volume
-      value: 0.486
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4045115779617507862, guid: d08fe4e8a67571f4e863fca94af13c19, type: 3}
       propertyPath: m_Enabled
@@ -3939,7 +3939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &394102591
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14631,8 +14631,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 450, y: 62}
-  m_SizeDelta: {x: 911.5, y: 200}
+  m_AnchoredPosition: {x: -10.591, y: -76.9431}
+  m_SizeDelta: {x: 1570.1123, y: 298.4637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1983428100
 MonoBehaviour:
@@ -14720,7 +14720,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -831.6024, y: 111.48331, z: 79.01291, w: -173.91121}
+  m_margin: {x: -0.13159184, y: 2.0792084, z: -1.9461366, w: -3.2409363}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

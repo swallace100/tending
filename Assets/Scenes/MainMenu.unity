@@ -763,7 +763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4045115779617507862, guid: d08fe4e8a67571f4e863fca94af13c19, type: 3}
       propertyPath: m_Volume
-      value: 0.486
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4045115779617507862, guid: d08fe4e8a67571f4e863fca94af13c19, type: 3}
       propertyPath: m_Enabled
@@ -2395,7 +2395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EventsHandler
   defaultMusicVolume: 1
   defaultAmbientVolume: 0.8
-  gameMusic: {fileID: 8300000, guid: ae6d2e4dc04f84f2a9eea526b8cf335a, type: 3}
+  gameMusic: {fileID: 8300000, guid: fd82db35d57fb1d4782de5b53f0d56f1, type: 3}
   ambianceMusic: {fileID: 8300000, guid: 749428170bd956149a4ede7c65dbb8b6, type: 3}
 --- !u!4 &1104483192
 Transform:
